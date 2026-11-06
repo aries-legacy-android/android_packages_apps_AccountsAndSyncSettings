@@ -99,9 +99,12 @@ public class AddAccountSettings extends AccountPreferenceBase {
                 mAddAccountGroup.addPreference(p);
             }
         } else {
-            String auths = new String();
-            for (String a : mAuthorities) auths += a + " ";
+            StringBuilder auths = new StringBuilder();
+            if (mAuthorities != null) {
+                for (String a : mAuthorities) auths.append(a).append(' ');
+            }
             Log.w(TAG, "No providers found for authorities: " + auths);
+            finish();
         }
     }
 
